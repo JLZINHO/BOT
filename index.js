@@ -3983,7 +3983,7 @@ break
 	})
 }
 starts()
-s', color(e, 'red'))
+'s', color(e, 'red'))
 		}
 	})
 }
