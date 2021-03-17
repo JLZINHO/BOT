@@ -1134,6 +1134,9 @@ if (text.includes("placa"))
 					party = await getBuffer(`https://api.vhtear.com/partytext?text=${coli1}&text2=${coli2}&apikey=ANTIGRATISNIHANJENKKK`)
 					client.sendMessage(from, party, image, {quoted: mek})
 					break
+					case 'bot':
+                               if (args.length < 1) return reply('*fala gay')
+                                         break
                 case 'ninjalogo':
                       if (args.length < 1) return reply('Cadê o texto?')
                       gh = body.slice(11)
