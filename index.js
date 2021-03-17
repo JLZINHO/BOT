@@ -677,14 +677,14 @@ if (text.includes("placa"))
 			reply("bora juntos?")
 	}
 	
-		if (messagesC.includes("cadebot")){
+		if (messagesC.includes("BOT")){
 			client.updatePresence(from, Presence.composing)
-			reply("olha eu aqui carai")
+			reply("TO AQUI😀")
 	}
 	
 		if (messagesC.includes("bot")){
 			client.updatePresence(from, Presence.composing)
-			reply("oi")
+			reply("FALA CORNO")
 	}
 	
 			if (messagesC.includes("bah")){
