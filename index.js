@@ -828,6 +828,20 @@ if (text.includes("placa"))
 					bufferx = await getBuffer(anwu.result.LinkImg)
 					client.sendMessage(from, bufferx, image, {quoted: mek})
 					break
+					case 'play':
+				
+					{
+  "status": true,
+  "result": {
+    "title": "Daun Jatuh - Resah Jadi Luka (Official Audio)",
+    "link": "https://tinyurl.com/yk2lqcx3",
+    "size": "4.2 MB",
+    "thumb": "https://i.ytimg.com/vi/tOMFR0nQt48/0.jpg",
+    "quality": "128kbps",
+    "ext": "mp3"
+  }
+}
+					break
 					case 'jadian':
 
                     if (!isGroup) return reply(from, 'este comando só pode ser usado dentro do grupo', id)
