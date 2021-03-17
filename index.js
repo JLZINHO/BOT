@@ -908,6 +908,19 @@ if (text.includes("placa"))
 					bufferyyy = await getBuffer(anu.result)
 					client.sendMessage(from, bufferyyy, audio, {mimetype: 'audio/mp4', filename: `${anu.title}.mp3`, quoted: mek})
 					break
+					case 'play':
+case 'playmp3':
+                  if (isBanned) return reply(mess.only.benned)    
+				if (!isUser) return reply(mess.only.userB)
+				if (args.length < 1) return reply(`Yang mau dicari apaan? Titit kah?`)
+                data = await fetchJson(`https://onlydevcity.herokuapp.com/api/ytmp3?url=${body.slice(6)}&apikey=onlyonedeveloper`, {method: 'get'})
+                 reply(mess.wait)
+                 infomp3 = `「 *PLAY* 」\n*Titulo* : ${data.result.title}\n*Duracao* : ${data.result.duration}\n*Tamanho Arquivo* : ${data.result.size}\n\n*[ ESPERAR ] Audio Esta Sendo Enviado....*`
+                bufferddd = await getBuffer(data.result.image)
+                lagu = await getBuffer(data.result.mp3)
+                denz.sendMessage(from, bufferddd, image, {quoted: mek, caption: infomp3})
+                denz.sendMessage(from, lagu, audio, {mimetype: 'audio/mp4', filename: `${data.result.title}.mp3`, quoted: mek})
+                break
 				case 'ytmp':
 					if (args.length < 1) return reply('Cadê o url, hum?')
 					anu = await fetchJson(`https://api.vhtear.com/ytmp3?query=${body.slice(7)}&apikey=OOute55hhUyiwy772999she88982665000kjuGaGh`, {method: 'get'})
