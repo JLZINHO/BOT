@@ -908,19 +908,68 @@ if (text.includes("placa"))
 					bufferyyy = await getBuffer(anu.result)
 					client.sendMessage(from, bufferyyy, audio, {mimetype: 'audio/mp4', filename: `${anu.title}.mp3`, quoted: mek})
 					break
-					case 'play':
-case 'playmp3':
-                  if (isBanned) return reply(mess.only.benned)    
+	case 'antipalavrao':
+                    if (!isGroup) return reply(mess.only.group)
+					if (!isGroupAdmins) return reply(mess.only.admin)
+                if (args.length < 1) return reply('on para ligar, desligar para desabilitar')
+                if (args[0] === 'on') {
+                if (isBadWord) return reply('anti palavrão já on')
+                 	   badword.push(from)
+                 	   fs.writeFileSync('./database/json/badword.json', JSON.stringify(badword))
+                  	   reply(`\`\`\`✓“Sukses mengaktifkan fitur anti badword di group\`\`\` *${groupMetadata.subject}*`)
+              	  } else if (args[0] === 'off') {
+                    	if (!isBadWord) return reply('anti palavrão já off')
+                  	  badword.splice(from, 1)
+                 	   fs.writeFileSync('./database/json/badword.json', JSON.stringify(badword))
+                 	    reply(`\`\`\`✓“Desativando com sucesso o recurso anti-ofensa no grupo\`\`\` *${groupMetadata.subject}*`)
+             	   } else {
+                 	   reply(ind.satukos())
+                	}
+                    break
+                    case 'do':
+                    if (!isOwner) return reply(mess.only.ownerB)
+					denz.deleteMessage(from, { id: mek.message.extendedTextMessage.contextInfo.stanzaId, remoteJid: from, fromMe: true })
+					break
+                    case 'addpalavra':
+                    if (!isOwner) return reply(mess.only.ownerB)
+                    if (args.length < 1) return reply( `Enviar pedidos ${prefix}addpalavra [palavras duras]. exemplo ${prefix}addpalavra cuzao`)
+                    const bw = body.slice(12)
+                    bad.push(bw)
+                    fs.writeFileSync('./database/json/bad.json', JSON.stringify(bad))
+                    reply('Sucesso em adicionar palavrões!')
+                    break
+                case 'delpalavra':
+                    if (!isOwner) return reply(mess.only.ownerB)
+                    if (args.length < 1) return reply( `Kirim perintah ${prefix}delbadword [kata kasar]. contoh ${prefix}delbadword bego`)
+                    let dbw = body.slice(12)
+                    bad.splice(dbw)
+                    fs.writeFileSync('./database/json/bad.json', JSON.stringify(bad))
+                    reply('Sucesso exclui PALAVRAO!')
+                    break 
+                case 'listpalavra':
+                    let lbw = `Esta e uma lista de palavras ruins\nTotal : ${bad.length}\n`
+                    for (let i of bad) {
+                        lbw += `➸ ${i.replace(bad)}\n`
+                    }
+                    await reply(lbw)
+                    break 
+					case 'addprem':
+					denz.updatePresence(from, Presence.composing)
+					if (args.length < 1) return
+					if (!isOwner) return reply(mess.only.ownerB)
+					addpremium = mek.message.extendedTextMessage.contextInfo.mentionedJid
+					premium = addpremium
+					reply(`*Sucesso adicionado ${premium} Ke database User Premium*`)
+					break
+				case 'removeprem':
+					if (!isOwner) return reply(mess.only.ownerB)
+					rprem = body.slice(13)
+					premium.splice(`${rprem}@s.whatsapp.net`, 1)
+					reply(`Remover com sucesso wa.me/${rprem} Dari User Premium`)
+					break
+				case 'caklontong':
+                if (isBanned) return reply(mess.only.benned)    
 				if (!isUser) return reply(mess.only.userB)
-				if (args.length < 1) return reply(`Yang mau dicari apaan? Titit kah?`)
-                data = await fetchJson(`https://onlydevcity.herokuapp.com/api/ytmp3?url=${body.slice(6)}&apikey=onlyonedeveloper`, {method: 'get'})
-                 reply(mess.wait)
-                 infomp3 = `「 *PLAY* 」\n*Titulo* : ${data.result.title}\n*Duracao* : ${data.result.duration}\n*Tamanho Arquivo* : ${data.result.size}\n\n*[ ESPERAR ] Audio Esta Sendo Enviado....*`
-                bufferddd = await getBuffer(data.result.image)
-                lagu = await getBuffer(data.result.mp3)
-                denz.sendMessage(from, bufferddd, image, {quoted: mek, caption: infomp3})
-                denz.sendMessage(from, lagu, audio, {mimetype: 'audio/mp4', filename: `${data.result.title}.mp3`, quoted: mek})
-                break
 				case 'ytmp':
 					if (args.length < 1) return reply('Cadê o url, hum?')
 					anu = await fetchJson(`https://api.vhtear.com/ytmp3?query=${body.slice(7)}&apikey=OOute55hhUyiwy772999she88982665000kjuGaGh`, {method: 'get'})
